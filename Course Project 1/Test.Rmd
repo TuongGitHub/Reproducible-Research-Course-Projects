@@ -1,0 +1,55 @@
+---
+title: "Acitivity Monitoring"
+author: "Tuong Nguyen"
+date: "October 12, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library('dplyr')
+library('data.table')
+library('ggplot2')
+```
+
+## Loading and preprocessing the data
+```{r echo=FALSE, results='markup'}
+activity <- read.csv('activity.csv')
+head(activity)
+
+```
+
+## What is mean total number of steps taken per day?
+1. Calculate the total number of steps taken per day
+2. Make a histogram of the total number of steps taken each day
+3. Calculate and report the mean and median of the total number of steps taken per day
+```{r, echo=FALSE }
+daily <- aggregate(x = activity$steps, by = list(activity$date), sum, na.rm = TRUE)
+colnames(daily) <- c("date","steps")
+hist(daily$steps,breaks = 50, 
+     main = "Histogram of the total number of steps taken daily",
+     xlab = 'number of steps')
+
+dailymean <- round(mean(daily$steps),0)
+dailymedian <- median(daily$steps)
+abline(v = dailymean, col = 'red', lty = 1, lwd = 3)
+abline(v = dailymedian, col = 'blue', lty = 1, lwd = 3)
+
+```
+
+
+#### Mean of the total of steps taken per day is `r dailymean` (red vertical line)
+
+
+#### Median of the total of steps taken per day is `r dailymedian` (blue vertical line)
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
