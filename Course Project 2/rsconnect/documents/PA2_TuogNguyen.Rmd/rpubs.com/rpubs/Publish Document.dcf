@@ -1,0 +1,8 @@
+name: Publish Document
+title:
+account: rpubs
+server: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/263771/4e142344e0494e20aa6aef008a62f1ef
+bundleId: https://api.rpubs.com/api/v1/document/263771/4e142344e0494e20aa6aef008a62f1ef
+url: http://rpubs.com/tuongnguyen/263771
+when: 1490863543.52363
